@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duo Hair &amp; Beauty | Bespoke Hair Salon in Keynsham</title>
+
+  <!-- Editorial Salon Fonts: Cormorant Garamond + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF8F5',
+            sand: '#F2EDE6',
+            espresso: '#1C1917',
+            muted: '#6B635B',
+            champagne: '#A67C52',
+            champagneDark: '#8A633E',
+            hairline: '#E5DDD3',
+            fascia: '#1F262D',
+            blush: '#E8C8C0',
+            blushLight: '#F5EDE8'
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    body {
+      background-color: #FAF8F5;
+      color: #1C1917;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle paper-grain texture */
+    .paper-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s var(--ease-editorial), transform 0.7s var(--ease-editorial);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 80ms; }
+    .reveal-delay-2 { transition-delay: 160ms; }
+    .reveal-delay-3 { transition-delay: 240ms; }
+
+    /* Live status dot pulse */
+    @keyframes softPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.45); opacity: 0.45; }
+    }
+    .status-pulse {
+      animation: softPulse 2.4s ease-in-out infinite;
+    }
+
+    /* Modal entrance */
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-card {
+      animation: modalFadeIn 0.3s var(--ease-editorial) forwards;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-champagne selection:text-white pb-20 md:pb-0">
+
+  <!-- Ambient Paper Grain -->
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <!-- Single-Line Sticky Header -->
+  <header class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-3 min-w-0 group">
+        <!-- Circular Dark Slate 'duo hair' Shopfront Badge -->
+        <div class="w-10 h-10 rounded-full bg-fascia flex flex-col items-center justify-center shrink-0 shadow-xs group-hover:bg-espresso transition">
+          <span class="font-display font-bold text-[15px] leading-none tracking-tight text-blush">duo</span>
+          <span class="font-sans font-light text-[7.5px] leading-none tracking-[0.14em] text-blushLight mt-0.5">hair</span>
+        </div>
+        <div class="min-w-0">
+          <span class="font-display text-lg sm:text-xl font-semibold tracking-tight block leading-none text-espresso truncate">Duo Hair &amp; Beauty</span>
+          <span class="text-[9.5px] uppercase tracking-[0.2em] text-muted block mt-1 truncate">Keynsham &middot; Hair &amp; Colour</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-7 text-xs uppercase tracking-[0.15em] text-muted">
+        <a href="#services" class="hover:text-espresso transition">Treatments</a>
+        <a href="#lookbook" class="hover:text-espresso transition">Lookbook</a>
+        <a href="#salon" class="hover:text-espresso transition">Salon</a>
+        <a href="#hours" class="hover:text-espresso transition">Hours &amp; Visit</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <!-- Mobile Compact Circular Phone Button -->
+        <a
+          href="tel:01179869867"
+          aria-label="Call Duo Hair & Beauty on 0117 986 9867"
+          class="md:hidden w-10 h-10 rounded-full bg-sand border border-hairline flex items-center justify-center text-espresso hover:border-champagne transition"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+        </a>
+
+        <!-- Single Desktop-Only Book Now Button -->
+        <a
+          href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden md:inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-medium tracking-wide bg-fascia text-ivory rounded-full hover:bg-champagne transition shadow-xs"
+        >
+          Book Now
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blush/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-5 pt-10 pb-14 md:pt-16 md:pb-20">
+      <div class="grid lg:grid-cols-12 gap-9 lg:gap-12 items-center">
+        <!-- Left Column: Editorial Copy, CTAs & Key Stats -->
+        <div class="lg:col-span-7">
+          <div class="reveal inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand border border-hairline text-[11px] uppercase tracking-[0.15em] text-muted mb-5">
+            <span class="text-champagneDark font-semibold">&#9733; 4.9 / 5</span>
+            <span>&middot;</span>
+            <span>127 GOOGLE REVIEWS</span>
+            <span>&middot;</span>
+            <span class="text-espresso font-medium">5 QUALIFIED STYLISTS</span>
+          </div>
+
+          <h1 class="reveal reveal-delay-1 font-display text-4xl sm:text-6xl lg:text-[62px] font-semibold tracking-tight leading-[1.05] text-espresso">
+            Effortless cuts, <span class="italic font-medium text-champagneDark">luminous</span> colour &amp; bespoke care.
+          </h1>
+
+          <p class="reveal reveal-delay-2 mt-5 text-base sm:text-lg text-muted leading-relaxed max-w-xl">
+            A calm, welcoming neighbourhood hair salon on Chandag Road, Keynsham. Our team pairs unhurried consultations with professional salon care from <strong class="font-medium text-espresso">L&rsquo;Or&eacute;al</strong>, <strong class="font-medium text-espresso">TIGI</strong>, and <strong class="font-medium text-espresso">ghd</strong>.
+          </p>
+
+          <!-- Primary Hero CTAs -->
+          <div id="hero-cta-group" class="reveal reveal-delay-3 mt-7 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <a
+              href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-fascia text-ivory text-sm font-medium rounded-full hover:bg-champagne transition shadow-xs"
+            >
+              Book via Fresha
+              <span aria-hidden="true">&nearr;</span>
+            </a>
+
+            <button
+              type="button"
+              onclick="openMatcher()"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-ivory border border-espresso/20 text-espresso text-sm font-medium rounded-full hover:border-champagne hover:bg-sand/60 transition"
+            >
+              <span class="text-champagneDark">&#10022;</span>
+              Find Your Treatment
+            </button>
+
+            <a
+              href="tel:01179869867"
+              class="w-full sm:w-auto inline-flex items-center justify-center sm:justify-start gap-1.5 px-2 py-2 text-xs sm:text-sm font-medium text-muted hover:text-espresso transition"
+            >
+              or call <span class="underline underline-offset-4 text-espresso">0117 986 9867</span>
+            </a>
+          </div>
+
+          <!-- 3 Key Stats + Recommended Products -->
+          <div class="reveal reveal-delay-3 mt-9 pt-6 border-t border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-5 max-w-xl">
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <span class="font-display text-2xl sm:text-3xl font-semibold text-espresso block">4.9/5</span>
+                <span class="text-[10px] uppercase tracking-[0.15em] text-muted mt-0.5 block">Google Rating</span>
+              </div>
+              <div>
+                <span class="font-display text-2xl sm:text-3xl font-semibold text-espresso block">5 Stylists</span>
+                <span class="text-[10px] uppercase tracking-[0.15em] text-muted mt-0.5 block">Qualified Team</span>
+              </div>
+              <div>
+                <span class="font-display text-2xl sm:text-3xl font-semibold text-espresso block">8:00 PM</span>
+                <span class="text-[10px] uppercase tracking-[0.15em] text-muted mt-0.5 block">Tue &amp; Thu Lates</span>
+              </div>
+            </div>
+
+            <div class="sm:border-l sm:border-hairline sm:pl-6">
+              <span class="text-[10px] uppercase tracking-[0.18em] text-muted block mb-1">Recommended Products</span>
+              <div class="flex items-center gap-2.5 text-xs font-semibold tracking-wider text-espresso">
+                <span>L&rsquo;OR&Eacute;AL</span>
+                <span class="text-champagne">&middot;</span>
+                <span>TIGI</span>
+                <span class="text-champagne">&middot;</span>
+                <span class="lowercase font-bold text-sm">ghd</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Compact Shopfront / Salon Card -->
+        <div class="lg:col-span-5 reveal reveal-delay-2 max-w-md w-full mx-auto lg:max-w-none">
+          <div class="bg-sand border border-hairline rounded-2xl p-4 sm:p-5 shadow-xs">
+            <!-- Salon Photo (Loads salon.webp -> falls back to salon.jpg -> hides cleanly if neither exists) -->
+            <div class="aspect-[4/3] w-full rounded-xl overflow-hidden bg-fascia border border-hairline mb-4">
+              <img
+                src="salon.webp"
+                alt="Duo Hair & Beauty Salon at 27 Chandag Road, Keynsham"
+                class="w-full h-full object-cover"
+                onerror="if(!this.dataset.triedJpg){this.dataset.triedJpg='1';this.src='salon.jpg';}else{this.parentElement.style.display='none';}"
+              />
+            </div>
+
+            <!-- Dark Slate Fascia Card (#1F262D) with Soft Blush (#E8C8C0) Wordmark -->
+            <div class="rounded-xl bg-fascia text-ivory p-5 border border-white/10">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <div class="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-ivory inline-flex items-center gap-2">
+                  <span id="card-status-dot" class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+                  <span id="card-status-text">Checking UK hours...</span>
+                </div>
+                <span class="text-[10px] uppercase tracking-[0.18em] text-blush/90 font-medium">BS31 1PW</span>
+              </div>
+
+              <!-- Shopfront-Matched 'duo hair' Wordmark -->
+              <div class="flex items-baseline justify-between gap-3 pt-1">
+                <div class="flex items-baseline gap-1.5">
+                  <span class="font-display font-bold text-4xl sm:text-[44px] tracking-tight leading-none text-blush">duo</span>
+                  <span class="font-sans font-light text-xl sm:text-2xl tracking-wide leading-none text-blushLight">hair</span>
+                </div>
+                <a href="tel:01179869867" class="text-xs font-medium tracking-wide text-ivory/90 hover:text-blush transition">
+                  0117 986 9867
+                </a>
+              </div>
+
+              <p class="text-xs text-ivory/80 mt-2.5">27 Chandag Road &middot; Keynsham, Bristol</p>
+
+              <div class="mt-4 pt-3.5 border-t border-white/10 flex items-center justify-between gap-2 text-[11px]">
+                <span class="text-blush/90 font-medium">L&rsquo;Or&eacute;al &middot; TIGI &middot; ghd</span>
+                <a
+                  href="https://www.instagram.com/duohairkeynsham/?hl=en-gb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-3 py-1 rounded-full bg-white/10 hover:bg-blush hover:text-fascia text-ivory transition font-medium"
+                >
+                  @duohairkeynsham &nearr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Treatments & Pricing Section (#services) -->
+  <section id="services" class="border-t border-hairline bg-sand/45 py-16 md:py-22">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-champagneDark font-semibold">Salon Menu</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-semibold mt-1 text-espresso">Treatments &amp; Starting Prices</h2>
+        </div>
+        <button
+          type="button"
+          onclick="openMatcher()"
+          class="text-xs font-medium text-champagneDark hover:text-espresso underline underline-offset-4 transition self-start md:self-auto"
+        >
+          Not sure what to book? Try the Treatment Matcher &rarr;
+        </button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div id="filter-bar" class="reveal flex flex-wrap gap-2 mb-8">
+        <button type="button" data-filter="all" class="filter-btn active px-4 py-2.5 rounded-full text-xs font-medium bg-fascia text-ivory transition">
+          All Treatments
+        </button>
+        <button type="button" data-filter="cuts" class="filter-btn px-4 py-2.5 rounded-full text-xs font-medium bg-ivory border border-hairline text-muted hover:text-espresso transition">
+          Cuts &amp; Styling
+        </button>
+        <button type="button" data-filter="colour" class="filter-btn px-4 py-2.5 rounded-full text-xs font-medium bg-ivory border border-hairline text-muted hover:text-espresso transition">
+          Colour &amp; Balayage
+        </button>
+        <button type="button" data-filter="treatments" class="filter-btn px-4 py-2.5 rounded-full text-xs font-medium bg-ivory border border-hairline text-muted hover:text-espresso transition">
+          Smoothing &amp; Care
+        </button>
+      </div>
+
+      <!-- Clean 8-Item Treatments Grid -->
+      <div id="services-grid" class="grid md:grid-cols-2 gap-4 sm:gap-5"></div>
+
+      <!-- Concise Footer Note -->
+      <p class="reveal mt-6 text-xs text-muted">
+        Seniors (65+) concession rates &amp; 10% student discount available in salon &middot; Salon Owner pricing available on request.
+      </p>
+    </div>
+  </section>
+
+  <!-- Recent Salon Work Lookbook (#lookbook) -->
+  <section id="lookbook" class="border-t border-hairline py-16 md:py-22">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-champagneDark font-semibold">Lookbook</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-semibold mt-1 text-espresso">Recent Salon Work</h2>
+        </div>
+        <a
+          href="https://www.instagram.com/duohairkeynsham/?hl=en-gb"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sand border border-hairline text-xs font-medium text-espresso hover:border-champagne transition self-start md:self-auto"
+        >
+          Follow @duohairkeynsham &nearr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Card 1: Textured Blonde Bob -->
+        <article class="reveal group bg-sand/55 border border-hairline rounded-2xl p-3.5 hover:border-champagne/60 transition">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden bg-ivory border border-hairline relative">
+            <img
+              src="work-1.jpg"
+              alt="Textured Blonde Bob — Woven Highlights & Precision Cut at Duo Hair & Beauty"
+              class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition duration-500"
+              onerror="if(!this.dataset.triedWebp){this.dataset.triedWebp='1';this.src='work-1.webp';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}"
+            />
+            <div style="display:none" class="w-full h-full flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-ivory via-sand to-blush/35">
+              <div class="px-3 py-1 rounded-full bg-fascia text-blush font-display font-bold text-sm mb-3">duo hair</div>
+              <span class="font-display text-2xl font-semibold text-espresso">Textured Blonde Bob</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-muted mt-2">Woven Highlights &amp; Precision Cut</span>
+            </div>
+          </div>
+          <div class="pt-3.5 px-1 flex items-center justify-between gap-2">
+            <div>
+              <h3 class="font-display text-xl font-semibold text-espresso">Textured Blonde Bob</h3>
+              <p class="text-xs text-muted">Woven Highlights &amp; Precision Cut</p>
+            </div>
+            <a
+              href="https://www.instagram.com/duohairkeynsham/?hl=en-gb"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-medium text-champagneDark hover:text-espresso transition shrink-0"
+            >
+              Instagram &nearr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Dimensional Bronde Balayage -->
+        <article class="reveal reveal-delay-1 group bg-sand/55 border border-hairline rounded-2xl p-3.5 hover:border-champagne/60 transition">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden bg-ivory border border-hairline relative">
+            <img
+              src="work-2.jpg"
+              alt="Dimensional Bronde Balayage — Hand-Painted Balayage & Toner at Duo Hair & Beauty"
+              class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition duration-500"
+              onerror="if(!this.dataset.triedWebp){this.dataset.triedWebp='1';this.src='work-2.webp';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}"
+            />
+            <div style="display:none" class="w-full h-full flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-ivory via-sand to-blush/35">
+              <div class="px-3 py-1 rounded-full bg-fascia text-blush font-display font-bold text-sm mb-3">duo hair</div>
+              <span class="font-display text-2xl font-semibold text-espresso">Dimensional Bronde Balayage</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-muted mt-2">Hand-Painted Balayage &amp; Toner</span>
+            </div>
+          </div>
+          <div class="pt-3.5 px-1 flex items-center justify-between gap-2">
+            <div>
+              <h3 class="font-display text-xl font-semibold text-espresso">Dimensional Bronde Balayage</h3>
+              <p class="text-xs text-muted">Hand-Painted Balayage &amp; Toner</p>
+            </div>
+            <a
+              href="https://www.instagram.com/duohairkeynsham/?hl=en-gb"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-medium text-champagneDark hover:text-espresso transition shrink-0"
+            >
+              Instagram &nearr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Copper Gloss Waves -->
+        <article class="reveal reveal-delay-2 group bg-sand/55 border border-hairline rounded-2xl p-3.5 hover:border-champagne/60 transition">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden bg-ivory border border-hairline relative">
+            <img
+              src="work-3.jpg"
+              alt="Copper Gloss Waves — All-Over Colour & ghd Waves at Duo Hair & Beauty"
+              class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition duration-500"
+              onerror="if(!this.dataset.triedWebp){this.dataset.triedWebp='1';this.src='work-3.webp';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}"
+            />
+            <div style="display:none" class="w-full h-full flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-ivory via-sand to-blush/35">
+              <div class="px-3 py-1 rounded-full bg-fascia text-blush font-display font-bold text-sm mb-3">duo hair</div>
+              <span class="font-display text-2xl font-semibold text-espresso">Copper Gloss Waves</span>
+              <span class="text-[11px] uppercase tracking-[0.18em] text-muted mt-2">All-Over Colour &amp; ghd Waves</span>
+            </div>
+          </div>
+          <div class="pt-3.5 px-1 flex items-center justify-between gap-2">
+            <div>
+              <h3 class="font-display text-xl font-semibold text-espresso">Copper Gloss Waves</h3>
+              <p class="text-xs text-muted">All-Over Colour &amp; ghd Waves</p>
+            </div>
+            <a
+              href="https://www.instagram.com/duohairkeynsham/?hl=en-gb"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-medium text-champagneDark hover:text-espresso transition shrink-0"
+            >
+              Instagram &nearr;
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Salon Highlights (#salon) -->
+  <section id="salon" class="border-t border-hairline bg-fascia text-ivory py-16 md:py-22">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-blush font-semibold">The Salon</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-semibold mt-1">Trusted across Keynsham.</h2>
+        </div>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Duo+Hair+%26+Beauty+27+Chandag+Rd+Keynsham+BS31+1PW"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-xs uppercase tracking-[0.14em] text-ivory/90 hover:border-blush hover:text-blush transition self-start"
+        >
+          Read Google Reviews &nearr;
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal p-7 rounded-2xl bg-white/[0.04] border border-white/10">
+          <span class="text-xs uppercase tracking-[0.18em] text-blush font-semibold">01 / Experienced Team</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold mt-2.5">5 Qualified Stylists</h3>
+          <p class="text-sm text-ivory/75 mt-2.5 leading-relaxed">
+            From effortless everyday trims and restyles to bespoke colour work, our Keynsham team tailors every appointment to your hair texture and lifestyle.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1 p-7 rounded-2xl bg-white/[0.04] border border-white/10">
+          <span class="text-xs uppercase tracking-[0.18em] text-blush font-semibold">02 / Salon Care</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold mt-2.5">L&rsquo;Or&eacute;al, TIGI &amp; ghd Care</h3>
+          <p class="text-sm text-ivory/75 mt-2.5 leading-relaxed">
+            We formulate luminous colour and bond-building Olaplex rituals using trusted professional brands alongside ghd styling tools for healthy, glossy results.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-2 p-7 rounded-2xl bg-white/[0.04] border border-white/10">
+          <span class="text-xs uppercase tracking-[0.18em] text-blush font-semibold">03 / Local Favourite</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold mt-2.5">4.9&#9733; Rated in Keynsham</h3>
+          <p class="text-sm text-ivory/75 mt-2.5 leading-relaxed">
+            Rated 4.9 stars across 127 Google reviews on Chandag Road for warm hospitality, relaxed appointments, and late-night Tuesday &amp; Thursday openings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opening Times & Location (#hours) -->
+  <section id="hours" class="border-t border-hairline bg-sand/45 py-16 md:py-22">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Opening Times Card -->
+        <div class="reveal lg:col-span-5 bg-ivory border border-hairline rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] uppercase tracking-[0.2em] text-champagneDark font-semibold">Opening Times</span>
+              <span id="hours-badge" class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-sand text-muted">UK Hours</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-semibold mt-1 mb-6 text-espresso">When to Visit</h2>
+
+            <dl id="hours-list" class="divide-y divide-hairline text-sm">
+              <div data-day="1" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="text-muted">Monday</dt>
+                <dd class="text-muted">Closed</dd>
+              </div>
+              <div data-day="2" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="font-medium">Tuesday</dt>
+                <dd>9:00 AM - 8:00 PM <span class="text-[11px] text-champagneDark font-medium ml-1">(Late)</span></dd>
+              </div>
+              <div data-day="3" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="font-medium">Wednesday</dt>
+                <dd>9:00 AM - 3:00 PM</dd>
+              </div>
+              <div data-day="4" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="font-medium">Thursday</dt>
+                <dd>9:00 AM - 8:00 PM <span class="text-[11px] text-champagneDark font-medium ml-1">(Late)</span></dd>
+              </div>
+              <div data-day="5" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="font-medium">Friday</dt>
+                <dd>9:00 AM - 5:00 PM</dd>
+              </div>
+              <div data-day="6" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="font-medium">Saturday</dt>
+                <dd>9:00 AM - 3:00 PM</dd>
+              </div>
+              <div data-day="0" class="py-3 px-2.5 rounded-lg flex justify-between items-center transition">
+                <dt class="text-muted">Sunday</dt>
+                <dd class="text-muted">Closed</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-hairline">
+            <a
+              href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-fascia text-ivory text-xs font-medium hover:bg-champagne transition"
+            >
+              Book Appointment on Fresha &nearr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Find the Salon Card -->
+        <div class="reveal reveal-delay-1 lg:col-span-7 bg-ivory border border-hairline rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-[0.2em] text-champagneDark font-semibold">Find the Salon</span>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-1 mb-5">
+              <h2 class="font-display text-3xl sm:text-4xl font-semibold text-espresso">27 Chandag Road, Keynsham</h2>
+              <span class="text-xs font-medium px-3 py-1 rounded-full bg-sand border border-hairline text-espresso self-start sm:self-auto">BS31 1PW</span>
+            </div>
+
+            <!-- Interactive Google Map Embed -->
+            <div class="w-full h-56 sm:h-64 rounded-xl overflow-hidden border border-hairline bg-sand mb-6">
+              <iframe
+                title="Google Map for Duo Hair & Beauty at 27 Chandag Road, Keynsham, BS31 1PW"
+                src="https://maps.google.com/maps?q=27%20Chandag%20Rd,%20Keynsham,%20Bristol%20BS31%201PW&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                class="w-full h-full border-0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl bg-sand/60 border border-hairline">
+                <span class="text-muted block mb-1">Phone</span>
+                <a href="tel:01179869867" class="font-semibold text-espresso hover:text-champagneDark transition">0117 986 9867</a>
+              </div>
+              <div class="p-3.5 rounded-xl bg-sand/60 border border-hairline">
+                <span class="text-muted block mb-1">Instagram</span>
+                <a href="https://www.instagram.com/duohairkeynsham/?hl=en-gb" target="_blank" rel="noopener noreferrer" class="font-semibold text-espresso hover:text-champagneDark transition">@duohairkeynsham &nearr;</a>
+              </div>
+              <div class="p-3.5 rounded-xl bg-sand/60 border border-hairline">
+                <span class="text-muted block mb-1">Online Booking</span>
+                <a href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E" target="_blank" rel="noopener noreferrer" class="font-semibold text-champagneDark hover:underline">Fresha Profile &nearr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Duo+Hair+%26+Beauty+27+Chandag+Rd+Keynsham+BS31+1PW"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 min-w-[180px] text-center px-5 py-3.5 rounded-full bg-fascia text-ivory text-xs font-medium hover:bg-champagne transition"
+            >
+              Open in Google Maps &nearr;
+            </a>
+            <button
+              type="button"
+              onclick="copyPostcode()"
+              class="px-5 py-3.5 rounded-full bg-sand border border-hairline text-espresso text-xs font-medium hover:border-espresso transition"
+            >
+              <span id="copy-label">Copy BS31 1PW</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal Footer -->
+  <footer class="border-t border-hairline bg-ivory py-9 text-xs text-muted">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="px-2.5 py-1 rounded-full bg-fascia inline-flex items-baseline gap-1">
+          <span class="font-display font-bold text-sm leading-none text-blush">duo</span>
+          <span class="font-sans font-light text-[10px] leading-none text-blushLight">hair</span>
+        </div>
+        <span>&copy; 2026 Duo Hair &amp; Beauty &middot; 27 Chandag Road, Keynsham, BS31 1PW</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://www.instagram.com/duohairkeynsham/?hl=en-gb" target="_blank" rel="noopener noreferrer" class="hover:text-espresso transition">Instagram</a>
+        <a href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E" target="_blank" rel="noopener noreferrer" class="hover:text-espresso transition">Fresha</a>
+        <a href="tel:01179869867" class="hover:text-espresso transition">0117 986 9867</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll-Aware Mobile Bottom Action Bar (Hidden while Hero CTA is visible) -->
+  <div
+    id="mobile-sticky-bar"
+    class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-ivory/95 backdrop-blur-md border-t border-hairline px-4 py-3 flex items-center gap-2.5 shadow-lg translate-y-full opacity-0 pointer-events-none transition-all duration-300"
+  >
+    <a
+      href="tel:01179869867"
+      class="flex-1 py-3 rounded-full bg-sand border border-hairline text-espresso text-xs font-semibold text-center active:scale-[0.99] transition"
+    >
+      Call Salon
+    </a>
+    <a
+      href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-[1.4] py-3 rounded-full bg-fascia text-ivory text-xs font-semibold text-center active:scale-[0.99] transition"
+    >
+      Book via Fresha &nearr;
+    </a>
+  </div>
+
+  <!-- Interactive 2-Step Treatment Matcher Modal -->
+  <div
+    id="matcher-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-fascia/60 backdrop-blur-xs"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="matcher-title"
+  >
+    <div class="modal-card relative w-full max-w-lg bg-ivory border border-hairline rounded-3xl p-6 sm:p-8 shadow-2xl">
+      <button
+        type="button"
+        onclick="closeMatcher()"
+        aria-label="Close consultation guide"
+        class="absolute top-5 right-5 w-9 h-9 rounded-full bg-sand border border-hairline text-espresso flex items-center justify-center hover:border-espresso transition text-sm"
+      >
+        &times;
+      </button>
+
+      <span class="text-[10px] uppercase tracking-[0.2em] text-champagneDark font-semibold">Digital Consultation</span>
+      <h3 id="matcher-title" class="font-display text-3xl font-semibold text-espresso mt-1">Find Your Ideal Treatment</h3>
+
+      <!-- Step 1: Hair Goal -->
+      <div id="matcher-step-1" class="mt-5">
+        <p class="text-xs text-muted mb-4">Step 1 of 2 &mdash; What are you looking for at your next visit?</p>
+        <div class="grid gap-2.5">
+          <button type="button" onclick="selectGoal('cutting')" class="text-left p-4 rounded-2xl bg-sand/70 border border-hairline hover:border-champagne transition group">
+            <span class="font-medium text-sm text-espresso group-hover:text-champagneDark block">Cut, Blow Dry or Restyle</span>
+            <span class="text-xs text-muted mt-0.5 block">Ladies Cut &amp; Blow Dry, Luxury Blow Dry, or Gents / Boys Cut</span>
+          </button>
+          <button type="button" onclick="selectGoal('balayage')" class="text-left p-4 rounded-2xl bg-sand/70 border border-hairline hover:border-champagne transition group">
+            <span class="font-medium text-sm text-espresso group-hover:text-champagneDark block">Balayage or Woven Highlights</span>
+            <span class="text-xs text-muted mt-0.5 block">Sun-kissed dimensional colour &amp; multi-tonal highlights</span>
+          </button>
+          <button type="button" onclick="selectGoal('colour')" class="text-left p-4 rounded-2xl bg-sand/70 border border-hairline hover:border-champagne transition group">
+            <span class="font-medium text-sm text-espresso group-hover:text-champagneDark block">All-Over Colour or Full Lightening</span>
+            <span class="text-xs text-muted mt-0.5 block">Rich L&rsquo;Or&eacute;al colour &amp; gloss, or Full-Head Bleach + Olaplex</span>
+          </button>
+          <button type="button" onclick="selectGoal('care')" class="text-left p-4 rounded-2xl bg-sand/70 border border-hairline hover:border-champagne transition group">
+            <span class="font-medium text-sm text-espresso group-hover:text-champagneDark block">Smoothing, Shine &amp; Bond Repair</span>
+            <span class="text-xs text-muted mt-0.5 block">Intensive Olaplex bond restoration for strength and mirror shine</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Finish / Maintenance -->
+      <div id="matcher-step-2" class="mt-5 hidden">
+        <p class="text-xs text-muted mb-4">Step 2 of 2 &mdash; Which best describes what you need today?</p>
+        <div class="grid gap-2.5">
+          <button type="button" onclick="showRecommendation('classic')" class="text-left p-4 rounded-2xl bg-sand/70 border border-hairline hover:border-champagne transition">
+            <span class="font-medium text-sm text-espresso block">Fresh Maintenance &amp; Polish</span>
+            <span class="text-xs text-muted mt-0.5 block">Keep your current cut or colour healthy, bright, and refreshed</span>
+          </button>
+          <button type="button" onclick="showRecommendation('transform')" class="text-left p-4 rounded-2xl bg-sand/70 border border-hairline hover:border-champagne transition">
+            <span class="font-medium text-sm text-espresso block">Full Transformation / Maximum Impact</span>
+            <span class="text-xs text-muted mt-0.5 block">Noticeable lift, full coverage, or intensive bond care</span>
+          </button>
+        </div>
+        <button type="button" onclick="resetMatcher()" class="mt-4 text-xs text-muted hover:text-espresso underline">
+          &larr; Back to step 1
+        </button>
+      </div>
+
+      <!-- Step 3: Recommendation -->
+      <div id="matcher-result" class="mt-5 hidden">
+        <div class="p-5 rounded-2xl bg-sand border border-champagne/40">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-champagneDark font-semibold">Recommended Treatment</span>
+            <span id="rec-price" class="text-xs font-semibold px-3 py-1 rounded-full bg-ivory border border-hairline text-espresso">from &pound;44</span>
+          </div>
+          <h4 id="rec-title" class="font-display text-2xl sm:text-3xl font-semibold text-espresso mt-2">Cut &amp; Blow Dry</h4>
+          <p id="rec-desc" class="text-xs sm:text-sm text-muted mt-2 leading-relaxed"></p>
+        </div>
+
+        <div class="mt-5 flex flex-col sm:flex-row gap-2.5">
+          <a
+            href="https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 py-3.5 px-5 rounded-full bg-fascia text-ivory text-xs font-medium text-center hover:bg-champagne transition"
+          >
+            Book via Fresha &nearr;
+          </a>
+          <a
+            href="tel:01179869867"
+            class="py-3.5 px-5 rounded-full bg-sand border border-hairline text-espresso text-xs font-medium text-center hover:border-espresso transition"
+          >
+            Call 0117 986 9867
+          </a>
+        </div>
+
+        <button type="button" onclick="resetMatcher()" class="mt-4 w-full text-center text-xs text-muted hover:text-espresso transition">
+          Start over
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div
+    id="toast"
+    class="fixed bottom-20 md:bottom-6 right-5 z-50 px-4 py-3 rounded-full bg-fascia text-ivory text-xs font-medium shadow-xl opacity-0 translate-y-2 pointer-events-none transition-all duration-300"
+  >
+    Postcode BS31 1PW copied
+  </div>
+
+  <script>
+    const freshaUrl = "https://www.fresha.com/lvp/duo-hair-beauty-chandag-road-keynsham-znYQ8E";
+
+    // Clean 8-Item Treatments Menu with Expandable "What's Included" Details
+    const treatments = [
+      {
+        name: "Cut & Blow Dry",
+        category: "cuts",
+        tag: "Cuts & Styling",
+        price: "from £44",
+        summary: "Personalised consultation, relaxing wash, precision cut, and signature blow-dry finish.",
+        included: "Includes bespoke style consultation, L'Oréal or TIGI shampoo & conditioning ritual, precision cut, and round-brush or ghd blow-dry finish."
+      },
+      {
+        name: "Luxury Blow Dry",
+        category: "cuts",
+        tag: "Cuts & Styling",
+        price: "from £25",
+        summary: "Bouncy volume, sleek smoothing, or soft waves styled for everyday polish or special occasions.",
+        included: "Includes relaxing cleanse, nourishing mask, heat protection, and tailored blow-dry or ghd wave styling."
+      },
+      {
+        name: "Gents / Boys Cut",
+        category: "cuts",
+        tag: "Cuts & Styling",
+        price: "from £19",
+        summary: "Sharp scissor or clipper cuts tailored to your preferred length, texture, and finish.",
+        included: "Includes consultation, precision scissor/clipper cut, neckline tidy, and styling finish."
+      },
+      {
+        name: "Bespoke Balayage",
+        category: "colour",
+        tag: "Colour & Balayage",
+        price: "from £87",
+        summary: "Hand-painted, sun-kissed dimension with a soft root melt for effortless, low-maintenance grow-out.",
+        included: "Includes tailored colour placement, custom gloss toner, L'Oréal care ritual, and signature blow-dry finish."
+      },
+      {
+        name: "Full-Head Woven Highlights",
+        category: "colour",
+        tag: "Colour & Balayage",
+        price: "from £73",
+        summary: "Classic multi-tonal woven highlights designed to brighten and frame your features throughout.",
+        included: "Includes full-head foil placement, toning consultation if required, nourishing treatment, and blow-dry finish."
+      },
+      {
+        name: "All-Over Colour & Gloss",
+        category: "colour",
+        tag: "Colour & Balayage",
+        price: "from £50",
+        summary: "Rich root-to-tip colour refresh or seamless regrowth coverage for mirror-like shine.",
+        included: "Includes shade-matched L'Oréal colour formulation, scalp & hair care rinse, and styled blow-dry finish."
+      },
+      {
+        name: "Full-Head Bleach + Olaplex",
+        category: "colour",
+        tag: "Colour & Balayage",
+        price: "from £77",
+        summary: "All-over blonde lightening formulated with protective Olaplex bond care for healthy shine.",
+        included: "Includes full-head lightening, integrated Olaplex bond builder, custom toner, and blow-dry finish."
+      },
+      {
+        name: "Olaplex Conditioning Treatment",
+        category: "treatments",
+        tag: "Smoothing & Care",
+        price: "from £17",
+        summary: "Deeply restorative bond-building treatment leaving hair silky, strong, and frizz-free.",
+        included: "Standalone bond-repair ritual (£17) or upgrade to include a full luxury blow-dry finish (£37)."
+      }
+    ];
+
+    let activeFilter = 'all';
+    const grid = document.getElementById('services-grid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    function renderTreatments() {
+      const filtered = activeFilter === 'all'
+        ? treatments
+        : treatments.filter(item => item.category === activeFilter);
+
+      grid.innerHTML = filtered.map((item, idx) => `
+        <article class="bg-ivory border border-hairline rounded-2xl p-5 sm:p-6 flex flex-col justify-between gap-4 hover:border-champagne/60 transition shadow-2xs">
+          <div>
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.18em] text-champagneDark font-semibold">${item.tag}</span>
+                <h3 class="font-display text-2xl sm:text-[26px] font-semibold text-espresso mt-1 leading-snug">${item.name}</h3>
+              </div>
+              <span class="font-display text-lg sm:text-xl font-semibold text-espresso bg-sand border border-hairline px-3.5 py-1 rounded-full shrink-0">
+                ${item.price}
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed mt-2.5">${item.summary}</p>
+
+            <!-- Expandable What's Included Drawer -->
+            <div id="details-${idx}" class="hidden mt-3 pt-3 border-t border-dashed border-hairline text-xs text-espresso/85 leading-relaxed">
+              <span class="font-semibold text-champagneDark uppercase tracking-wider text-[10px] block mb-1">What&rsquo;s Included</span>
+              ${item.included}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-hairline flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onclick="toggleDetails(${idx}, this)"
+              aria-expanded="false"
+              class="text-xs font-medium text-muted hover:text-espresso transition inline-flex items-center gap-1"
+            >
+              <span>What&rsquo;s Included</span>
+              <span class="chevron text-[10px] transition-transform duration-200">&#9662;</span>
+            </button>
+            <a
+              href="${freshaUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-semibold text-espresso hover:text-champagneDark transition"
+            >
+              Book via Fresha &nearr;
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function toggleDetails(idx, btn) {
+      const drawer = document.getElementById(`details-${idx}`);
+      const chevron = btn.querySelector('.chevron');
+      const isHidden = drawer.classList.contains('hidden');
+      drawer.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(isHidden));
+      if (chevron) {
+        chevron.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.dataset.filter;
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-fascia', 'text-ivory');
+          b.classList.add('bg-ivory', 'text-muted', 'border', 'border-hairline');
+        });
+        btn.classList.add('active', 'bg-fascia', 'text-ivory');
+        btn.classList.remove('bg-ivory', 'text-muted', 'border', 'border-hairline');
+        renderTreatments();
+      });
+    });
+
+    // Live UK Salon Hours Detection (Europe/London)
+    function updateSalonStatus() {
+      const schedule = {
+        0: null,                                    // Sun: Closed
+        1: null,                                    // Mon: Closed
+        2: { open: 9, close: 20, label: '8:00 PM' }, // Tue: 9am - 8pm
+        3: { open: 9, close: 15, label: '3:00 PM' }, // Wed: 9am - 3pm
+        4: { open: 9, close: 20, label: '8:00 PM' }, // Thu: 9am - 8pm
+        5: { open: 9, close: 17, label: '5:00 PM' }, // Fri: 9am - 5pm
+        6: { open: 9, close: 15, label: '3:00 PM' }  // Sat: 9am - 3pm
+      };
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+      let ukNow;
+      try {
+        ukNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/London' }));
+      } catch (e) {
+        ukNow = new Date();
+      }
+
+      const day = ukNow.getDay();
+      const hourFloat = ukNow.getHours() + ukNow.getMinutes() / 60;
+      const todayHours = schedule[day];
+
+      document.querySelectorAll('#hours-list > div').forEach(row => {
+        if (Number(row.dataset.day) === day) {
+          row.classList.add('bg-sand', 'font-medium');
+        }
+      });
+
+      const cardDot = document.getElementById('card-status-dot');
+      const cardText = document.getElementById('card-status-text');
+      const hoursBadge = document.getElementById('hours-badge');
+
+      if (todayHours && hourFloat >= todayHours.open && hourFloat < todayHours.close) {
+        const msg = `Open Now · Closes ${todayHours.label}`;
+        cardDot.className = 'w-2 h-2 rounded-full bg-emerald-400 status-pulse shrink-0';
+        cardText.textContent = msg;
+        hoursBadge.textContent = 'Open Now';
+        hoursBadge.className = 'px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
+      } else {
+        let nextDayIdx = (todayHours && hourFloat < todayHours.open) ? day : (day + 1) % 7;
+        while (!schedule[nextDayIdx]) {
+          nextDayIdx = (nextDayIdx + 1) % 7;
+        }
+        const nextLabel = nextDayIdx === day ? 'Today at 9:00 AM' : `${dayNames[nextDayIdx]} at 9:00 AM`;
+        const msg = `Closed · Opens ${nextLabel}`;
+        cardDot.className = 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+        cardText.textContent = msg;
+        hoursBadge.textContent = 'Closed';
+      }
+    }
+
+    // 2-Step Treatment Matcher Modal Logic
+    let selectedGoal = 'cutting';
+    const recommendations = {
+      cutting: {
+        classic: {
+          title: "Luxury Blow Dry",
+          price: "from £25",
+          desc: "A relaxing wash, nourishing mask, and bouncy or sleek blow-dry finish styled with ghd tools."
+        },
+        transform: {
+          title: "Cut & Blow Dry",
+          price: "from £44",
+          desc: "A tailored consultation, precision restyle or trim, and signature salon blow-dry finish."
+        }
+      },
+      balayage: {
+        classic: {
+          title: "Bespoke Balayage",
+          price: "from £87",
+          desc: "Hand-painted, sun-kissed dimension with a soft root melt and custom gloss toner."
+        },
+        transform: {
+          title: "Full-Head Woven Highlights",
+          price: "from £73",
+          desc: "Multi-tonal woven foil highlights throughout to brighten and frame your features."
+        }
+      },
+      colour: {
+        classic: {
+          title: "All-Over Colour & Gloss",
+          price: "from £50",
+          desc: "Rich root-to-tip L'Oréal colour refresh or seamless regrowth coverage with lasting shine."
+        },
+        transform: {
+          title: "Full-Head Bleach + Olaplex",
+          price: "from £77",
+          desc: "All-over blonde lightening formulated with protective Olaplex bond care and blow dry."
+        }
+      },
+      care: {
+        classic: {
+          title: "Olaplex Conditioning Treatment",
+          price: "from £17",
+          desc: "Deeply restorative bond-building ritual (£17 standalone, or £37 including luxury blow dry)."
+        },
+        transform: {
+          title: "Olaplex Treatment + Blow Dry",
+          price: "from £37",
+          desc: "Full bond-repair ritual paired with a smooth, frizz-free salon blow-dry finish."
+        }
+      }
+    };
+
+    function openMatcher() {
+      resetMatcher();
+      const modal = document.getElementById('matcher-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeMatcher() {
+      const modal = document.getElementById('matcher-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function selectGoal(goal) {
+      selectedGoal = goal;
+      document.getElementById('matcher-step-1').classList.add('hidden');
+      document.getElementById('matcher-step-2').classList.remove('hidden');
+    }
+
+    function showRecommendation(choice) {
+      const rec = recommendations[selectedGoal][choice];
+      document.getElementById('rec-title').textContent = rec.title;
+      document.getElementById('rec-price').textContent = rec.price;
+      document.getElementById('rec-desc').textContent = rec.desc;
+      document.getElementById('matcher-step-2').classList.add('hidden');
+      document.getElementById('matcher-result').classList.remove('hidden');
+    }
+
+    function resetMatcher() {
+      document.getElementById('matcher-step-1').classList.remove('hidden');
+      document.getElementById('matcher-step-2').classList.add('hidden');
+      document.getElementById('matcher-result').classList.add('hidden');
+    }
+
+    document.getElementById('matcher-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'matcher-modal') closeMatcher();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMatcher();
+    });
+
+    // Copy Postcode
+    function copyPostcode() {
+      const temp = document.createElement('input');
+      temp.value = 'BS31 1PW';
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand('copy');
+        const label = document.getElementById('copy-label');
+        const toast = document.getElementById('toast');
+        label.textContent = 'Copied BS31 1PW!';
+        toast.classList.remove('opacity-0', 'translate-y-2');
+        setTimeout(() => {
+          label.textContent = 'Copy BS31 1PW';
+          toast.classList.add('opacity-0', 'translate-y-2');
+        }, 2200);
+      } catch (e) {}
+      document.body.removeChild(temp);
+    }
+
+    // Staggered Scroll Reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Scroll-Aware Mobile Sticky Bar (Hidden while Hero CTA is visible)
+    const heroCtaGroup = document.getElementById('hero-cta-group');
+    const mobileStickyBar = document.getElementById('mobile-sticky-bar');
+    if (heroCtaGroup && mobileStickyBar) {
+      const stickyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            mobileStickyBar.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+            mobileStickyBar.classList.remove('translate-y-0', 'opacity-100');
+          } else {
+            mobileStickyBar.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+            mobileStickyBar.classList.add('translate-y-0', 'opacity-100');
+          }
+        });
+      }, { threshold: 0 });
+      stickyObserver.observe(heroCtaGroup);
+    }
+
+    // Initialize
+    renderTreatments();
+    updateSalonStatus();
+  </script>
+</body>
+</html>
